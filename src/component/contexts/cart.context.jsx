@@ -34,7 +34,7 @@ const clearCartItem = (cartItems, cartItemToClear) => {
 export const CartContext = createContext({ isCartOpen: false, setIsCartOpen: () => {}, cartItems: [], addItemToCart: () => {}, cartCount: 0, removeItemFromCart: () => {}, clearItemFromCart: () => {}, cartTotal: 0 });
 
 export const CartProvider = ({ children }) => {
-	const [isCartOpen, setIsCartOpen] = useState(true);
+	const [isCartOpen, setIsCartOpen] = useState(false);
 	const [cartItems, setCartItems] = useState([]);
 	const [cartCount, setCartCount] = useState(0);
 	const [cartTotal, setCartTotal] = useState(0);
