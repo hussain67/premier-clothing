@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from "firebase/firestore";
 //  Firebase configuration
@@ -40,7 +40,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 		batch.set(docRef, object);
 	});
 	await batch.commit();
-	console.log("done");
+	//console.log("done");
 };
 
 export const getCategoriesAndDocuments = async () => {
@@ -48,8 +48,6 @@ export const getCategoriesAndDocuments = async () => {
 	const q = query(collectionRef);
 	const querySnapshot = await getDocs(q);
 	return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
-
-	//return categoryMap;
 };
 
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
