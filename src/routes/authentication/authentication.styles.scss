@@ -1,6 +1,11 @@
-.authentication-container {
-	width: 900px;
-	margin: 30px auto;
-	display: flex;
-	justify-content: space-around;
+// .authentication-container {
+// 	width: 900px;
+// 	margin: 30px auto;
+// 	display: flex;
+// 	justify-content: space-around;
+// }
+
+.authentication {
+	display: grid;
+	place-content: center;
 }

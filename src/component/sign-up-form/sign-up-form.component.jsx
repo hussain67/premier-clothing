@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
-//import { UserContext } from "../contexts/user.context";
 import FormInput from "../form-input/form-input.component";
 import "./sign-up-form.styles.scss";
 
@@ -12,8 +11,7 @@ const defaultFormFields = {
 	confirmPassword: ""
 };
 
-const SignUpForm = () => {
-	//const { setCurrentUser } = useContext(UserContext);
+const SignUpForm = ({ setIsRegistered }) => {
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { displayName, email, password, confirmPassword } = formFields;
 	function handleChange(e) {
@@ -50,9 +48,12 @@ const SignUpForm = () => {
 		}
 	};
 	return (
-		<div className="sign-up-container">
-			<h2>Dont have an account</h2>
-			<span>Sign up with your email and password</span>
+		<div className="sign-up">
+			<h2 className="sign-up-heading">
+				{" "}
+				Welcome to Premier Clothing
+				<span> Please Sign up</span>
+			</h2>
 			<form onSubmit={handleSubmit}>
 				<FormInput
 					label="Display Name"
@@ -88,7 +89,12 @@ const SignUpForm = () => {
 					value={confirmPassword}
 					required
 				/>
-				<Button type="submit">Sign Up</Button>
+				<div className="sign-up-btn-container">
+					<Button type="submit">Sign Up</Button>
+					<p>
+						Already a customer? <span onClick={() => setIsRegistered(true)}>Sign In</span>
+					</p>
+				</div>
 			</form>
 		</div>
 	);

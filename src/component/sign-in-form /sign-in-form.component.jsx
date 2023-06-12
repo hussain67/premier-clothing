@@ -12,7 +12,7 @@ const defaultFormFields = {
 	password: ""
 };
 
-const SignInForm = () => {
+const SignInForm = ({ setIsRegistered }) => {
 	const dispatch = useDispatch();
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { email, password } = formFields;
@@ -50,9 +50,13 @@ const SignInForm = () => {
 	};
 
 	return (
-		<div className="sign-in-container">
-			<h2> Already have an account</h2>
-			<span>Sign in with your email and password</span>
+		<div className="sign-in">
+			<h2 className="sign-in-heading">
+				{" "}
+				Welcome to Premier Clothing
+				<span> Please Sign in</span>
+			</h2>
+
 			<form onSubmit={handleSubmit}>
 				<FormInput
 					label="Email"
@@ -83,6 +87,14 @@ const SignInForm = () => {
 					</Button>
 				</div>
 			</form>
+			<hr className="sign-in-hr" />
+			<h2 className="new-customer">New customer</h2>
+			<Button
+				buttonType="inverted"
+				onClick={() => setIsRegistered(false)}
+			>
+				Create an account
+			</Button>
 		</div>
 	);
 };

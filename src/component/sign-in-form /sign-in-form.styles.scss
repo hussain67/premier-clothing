@@ -1,12 +1,34 @@
-.sign-in-container {
+.sign-in {
 	display: flex;
 	flex-direction: column;
-	width: 380px;
+	width: 360px;
 	h2 {
+		text-align: center;
+		letter-spacing: 0.5px;
 		margin: 10px 0;
+	}
+	@media (min-width: 668px) {
+		width: 450px;
+	}
+	&-heading {
+		span {
+			display: block;
+			margin-top: 14px;
+		}
 	}
 }
 .buttons-container {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 25px;
+}
+.sign-in-hr {
+	width: 100%;
+	margin-top: 25px;
+	margin-bottom: 15px;
+
+	border: 0.5px solid black;
+}
+.new-customer {
+	padding-bottom: 15px;
 }
