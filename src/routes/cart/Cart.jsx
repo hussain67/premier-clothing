@@ -1,5 +1,5 @@
 import CheckoutItem from "../../component/cart-item/Cart-item";
-import "./cartPage.scss";
+import "./cart.scss";
 import { useSelector } from "react-redux";
 import { selectCartItems, selectCartTotal } from "../../store/cart/cart.selector";
 import Button from "../../component/button/button";

@@ -5,8 +5,6 @@ import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../component/cart-icon/Cart-icon";
 
-import { selectIsCartOpen } from "../../store/cart/cart.selector";
-
 const Navigation = () => {
 	const currentUser = useSelector(state => state.user.currentUser);
 

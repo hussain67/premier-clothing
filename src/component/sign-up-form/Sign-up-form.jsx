@@ -38,12 +38,11 @@ const SignUpForm = ({ setIsRegistered }) => {
 		try {
 			const { user } = await createAuthUserWithEmailAndPassword(email, password);
 			console.log(user);
-			//setCurrentUser(user);
+
 			//Create user document
-			const userDocRef = await createUserDocumentFromAuth(user, { displayName });
+			await createUserDocumentFromAuth(user, { displayName });
 			resetFormFields();
 			navigate("/");
-			//console.log(userDocRef);
 		} catch (error) {
 			if (error.code === "auth/email-already-in-use") {
 				alert("Email is already in use, Try another Email");

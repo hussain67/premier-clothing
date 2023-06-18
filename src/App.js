@@ -4,11 +4,11 @@ import Authentication from "./routes/authentication/Authentication";
 import Checkout from "./routes/checkout/Checkout";
 import Home from "./routes/home/Home";
 import Navigation from "./routes/navigation/Navigation";
-import Shop from "./routes/shop/shop";
+import Shop from "./routes/shop/Shop";
 import { onAuthStateChangedListner, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
 import { useDispatch } from "react-redux";
-import CartPage from "./routes/cart/CartPage";
+import Cart from "./routes/cart/Cart";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const App = () => {
 				/>
 				<Route
 					path="cart"
-					element={<CartPage />}
+					element={<Cart />}
 				/>
 				<Route
 					path="checkout"

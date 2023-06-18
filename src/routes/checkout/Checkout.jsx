@@ -1,6 +1,6 @@
 import "./checkout.scss";
 import { useSelector } from "react-redux";
-import { selectCartItems, selectCartTotal } from "../../store/cart/cart.selector";
+import { selectCartTotal } from "../../store/cart/cart.selector";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import PaymentForm from "../../component/payment-form/Payment-form";
 

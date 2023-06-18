@@ -6,7 +6,6 @@ import { selectCartItems } from "../../store/cart/cart.selector";
 import { FaTrash } from "react-icons/fa";
 
 const CheckoutItem = ({ cartItem }) => {
-	//const { addItemToCart, removeItemFromCart, clearItemFromCart } = useContext();
 	const dispatch = useDispatch();
 	const cartItems = useSelector(selectCartItems);
 	const { name, imageUrl, price, quantity } = cartItem;
