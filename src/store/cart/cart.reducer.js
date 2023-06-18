@@ -13,7 +13,8 @@ export const cartReducer = (state = CART_INITIAL_STATE, action) => {
 		case CART_ACTION_TYPE.SET_IS_CART_OPEN:
 			return {
 				...state,
-				isCartOpen: !state.isCartOpen
+				//isCartOpen: !state.isCartOpen
+				isCartOpen: payload
 			};
 		default:
 			return state;

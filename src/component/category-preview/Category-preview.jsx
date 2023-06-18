@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import ProductCard from "../product-card/product-card.component";
-import "./category-preview.styles.scss";
+import ProductCard from "../product-card/Product-card";
+import "./category-preview.scss";
 
 const CategoryPreview = ({ title, products }) => {
 	const navigate = useNavigate();

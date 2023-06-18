@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCategoriesIsLoading, selectCategoriesMap } from "../../store/categories/category.selector";
 import { useParams } from "react-router-dom";
-import ProductCard from "../../component/product-card/product-card.component";
-import "./category.styles.scss";
-import Spinner from "../../component/spinner/spinner.component";
+import ProductCard from "../../component/product-card/Product-card";
+import "./category.scss";
+import Spinner from "../../component/spinner/spinner";
 
 const Category = () => {
 	const { category } = useParams();
@@ -20,15 +20,18 @@ const Category = () => {
 	if (isLoading) <Spinner />;
 
 	return (
-		<div className="category-container">
-			{products &&
-				products.map(product => (
-					<ProductCard
-						key={product.id}
-						product={product}
-					/>
-				))}
-		</div>
+		<article className="category">
+			<h1>{category}</h1>
+			<div className="category-container">
+				{products &&
+					products.map(product => (
+						<ProductCard
+							key={product.id}
+							product={product}
+						/>
+					))}
+			</div>
+		</article>
 	);
 };
 

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./category-item.styles.scss";
+import "./category-item.scss";
 
 const CategoryItem = ({ category }) => {
 	const { title, imageUrl } = category;

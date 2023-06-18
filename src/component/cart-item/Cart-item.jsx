@@ -1,13 +1,16 @@
 import { addItemToCart, removeItemFromCart, clearItemFromCart } from "../../store/cart/cart.actions";
-import "./checkout-item.styles.scss";
+import "./cart-item.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import { FaTrash } from "react-icons/fa";
+
 const CheckoutItem = ({ cartItem }) => {
 	//const { addItemToCart, removeItemFromCart, clearItemFromCart } = useContext();
 	const dispatch = useDispatch();
 	const cartItems = useSelector(selectCartItems);
 	const { name, imageUrl, price, quantity } = cartItem;
+	const subtotal = quantity * price;
 
 	const clearItemFromCartHandler = () => {
 		dispatch(clearItemFromCart(cartItems, cartItem));
@@ -19,40 +22,48 @@ const CheckoutItem = ({ cartItem }) => {
 		dispatch(removeItemFromCart(cartItems, cartItem));
 	};
 	return (
-		<div className="checkout-item-container">
-			<div className="image-container">
+		<section className="cart-item-container">
+			<article className="item-container">
 				<img
 					src={imageUrl}
 					alt={name}
 				/>
-			</div>
-
-			<span className="name">{name}</span>
-			<span className="quantity">
-				<div
-					className="arrow"
-					onClick={removeItemFromCartHandler}
-				>
-					&#10094;
+				<div className="item-info">
+					<h5 className="name">{name}</h5>
+					<h5 className="price">£{price}</h5>
 				</div>
-				<span className="value"> {quantity} </span>
+			</article>
 
-				<div
-					className="arrow"
-					onClick={addItemToCartHandler}
-				>
-					&#10095;
+			<article>
+				<div className="quantity">
+					<div
+						className="arrow"
+						onClick={removeItemFromCartHandler}
+					>
+						&#10094;
+					</div>
+					<span className="value"> {quantity} </span>
+
+					<div
+						className="arrow"
+						onClick={addItemToCartHandler}
+					>
+						&#10095;
+					</div>
 				</div>
-			</span>
+			</article>
+			<article className="subtotal">
+				{" "}
+				<span>Subtotal:</span> £ {subtotal}
+			</article>
 
-			<span className="price">£{price}</span>
-			<div
+			<article
 				className="remove-button"
 				onClick={clearItemFromCartHandler}
 			>
-				<span>&#10005;</span>
-			</div>
-		</div>
+				<FaTrash />
+			</article>
+		</section>
 	);
 };
 export default CheckoutItem;

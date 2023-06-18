@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
+import Button from "../button/button";
 import FormInput from "../form-input/form-input.component";
-import "./sign-up-form.styles.scss";
+import "./sign-up-form.scss";
 
 const defaultFormFields = {
 	displayName: "",
@@ -12,6 +13,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = ({ setIsRegistered }) => {
+	const navigate = useNavigate();
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { displayName, email, password, confirmPassword } = formFields;
 	function handleChange(e) {
@@ -26,6 +28,7 @@ const SignUpForm = ({ setIsRegistered }) => {
 		event.preventDefault();
 
 		// Check that password matches
+
 		if (password !== confirmPassword) {
 			alert("Password do not match");
 			return;
@@ -39,7 +42,8 @@ const SignUpForm = ({ setIsRegistered }) => {
 			//Create user document
 			const userDocRef = await createUserDocumentFromAuth(user, { displayName });
 			resetFormFields();
-			console.log(userDocRef);
+			navigate("/");
+			//console.log(userDocRef);
 		} catch (error) {
 			if (error.code === "auth/email-already-in-use") {
 				alert("Email is already in use, Try another Email");

@@ -1,15 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
-import "./navigation.styles.scss";
+import "./navigation.scss";
 import { useSelector } from "react-redux";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import CartIcon from "../../component/cart-icon/cart-icon.component";
-import CartDropdown from "../../component/cart-dropdown/cart-dropdown.component";
+import CartIcon from "../../component/cart-icon/Cart-icon";
+
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 const Navigation = () => {
 	const currentUser = useSelector(state => state.user.currentUser);
-	const isCartOpen = useSelector(selectIsCartOpen);
 
 	return (
 		<>
@@ -35,7 +34,6 @@ const Navigation = () => {
 					</Link>
 					<CartIcon />
 				</div>
-				{isCartOpen && <CartDropdown />}
 			</div>
 			<Outlet />
 		</>
