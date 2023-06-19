@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
 import { FaTrash } from "react-icons/fa";
 
-const CheckoutItem = ({ cartItem }) => {
+const CartItem = ({ cartItem }) => {
 	const dispatch = useDispatch();
 	const cartItems = useSelector(selectCartItems);
 	const { name, imageUrl, price, quantity } = cartItem;
@@ -65,4 +65,4 @@ const CheckoutItem = ({ cartItem }) => {
 		</section>
 	);
 };
-export default CheckoutItem;
+export default CartItem;
