@@ -22,14 +22,15 @@ const PaymentForm = () => {
 		const response = await fetch("/.netlify/functions/create-payment-intent", {
 			method: "post",
 			headers: {
-				"content-type": "application/json"
+				"Content-type": "application/json"
 			},
 			body: JSON.stringify({ amount: amount * 100 })
 		}).then(res => res.json());
+
 		const {
 			paymentIntent: { client_secret }
 		} = response;
-		console.log(client_secret);
+
 		const paymentResult = await stripe.confirmCardPayment(client_secret, {
 			payment_method: {
 				card: elements.getElement(CardElement),
@@ -40,7 +41,7 @@ const PaymentForm = () => {
 		});
 		setIsProcessingPayment(false);
 		if (paymentResult.error) {
-			alert(paymentResult.error);
+			alert(paymentResult.error.message);
 		} else {
 			if (paymentResult.paymentIntent.status === "succeeded") {
 				alert("Payment Successful");
